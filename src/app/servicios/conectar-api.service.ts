@@ -12,7 +12,7 @@ export class ConectarApiService {
  //API: string='https://ciaf.edu.co/api_rest';
 
 //local//
-API: string='http://localhost/api_rest';
+API: string='http://localhost/inscripcion-api';
 autorizacion = 'KFTDQFYvqbPLXkHTuXQJR4Qy3vUryK';
 
 

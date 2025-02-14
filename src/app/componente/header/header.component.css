@@ -10,8 +10,9 @@ header .icono img{
 
 
 .logo img{
-    width: 150px;
+    width: 130px;
     text-align: center;
+    padding: 7px;
 }
 /* ****** estilo para que funcione el fixed del nav */
 .fixed{
