@@ -1,0 +1,754 @@
+
+<header class="header m-0 py-2 poslupa">
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-12 col-12">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-4 icono"> 
+                    <a class="btn-link-1 vertical-align-center justify-content-center" href="#direccioncrai" data-bs-toggle="modal"> 
+                        <img [src]="img_destino" alt="Ubicación CIAF" class="mx-2">
+                        <span class="ml-2">Calle 20 #4-57 Pereira</span>
+                    </a>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-4 icono" href="#direccion" data-bs-toggle="modal"> 
+                    <a class="btn-link-1 vertical-align-center justify-content-center">
+                        <img [src]="img_ubicacion" alt="Ubicación CIAF" class="mx-2">
+                        <span class="ml-2">Cra. 6 No. 24-56 Pereira</span>
+                    </a>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-4 icono"> 
+                    <a href="https://www.ciaf.digital" target="_blank" class="btn-link-1 vertical-align-center justify-content-center">
+                        <img [src]="img_campus" alt="Icono campus virtual" class="mx-2">
+                        <span class="ml-2">Campus virtual</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav class="p-3 mb-3 border-bottom bg-1">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+            <img [src]="img_logo" alt="Ubicación CIAF" class="mx-2" width="100px">
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center  mb-md-0">
+
+                <div class=" text-white px-4">Estado: {{estado}}</div>
+        </ul>
+
+        <div class="text-white px-4">{{nombre}}</div>
+
+        <div class="dropdown text-end">
+            
+          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small">
+            <span class="px-4">Estado</span>
+            <p class="dropdown-item active ">{{estado}}</p>
+            <li><a class="dropdown-item btn" (click)="logAutUser()">Salir</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</nav>
+<div class="row justify-content-center">
+    <div class="col-xl-9">
+        <div class="row">
+
+            <div class="col-6">
+                <p class="m-0 lh-1">
+                    <span class="titulo-2 fs-18 text-semibold">My Dashboard</span>
+                </p>
+            </div>
+            <div class="col-6 text-right">
+                <button class="btn btn-sm btn-outline-warning px-2 py-0" onclick="iniciarTour()"><i class="fa-solid fa-play"></i> Tour</button>
+            </div>
+
+            <div class="col-xl-8 col-12 col-md py-3 py-md-5">
+                <h2 class="fw-light mb-0 text-secondary">Bienvenido,</h2>
+                <h1 class="display-3 username ">IMPRIME TU FUTURO</h1>
+                <h2 class="fs-18">{{nombreprograma}} <span class="badge text-bg-info">{{jornada}}</span></h2>
+            </div>
+
+            <div class="col-4 d-flex align-items-center p-0 m-0" id="t-tip">
+                <div class="card m-2">
+                   <div class="card-header bg-success">
+                      <div class="row align-items-center">
+                            <div class="col">
+                               <h6 class="titulo-2 fs-18 text-semibold text-white">
+                                  <img src="../../../assets/image/seguridad.webp" width="30px">
+                                  Solicita tu crédito
+                               </h6>
+                            </div>
+
+                      </div>
+                   </div>
+                   <div class="card-body ">
+                      <p>
+                        En CIAF estamos listos para iniciar juntos esta experiencia creativa. 
+                        Por eso diseñamos una financiación directa, garantizada y lo mejor sin intereses. 
+                        Haz click en el botón verde y comienza a vivir este increíble #ParcheCIAF.
+
+                         <a class="btn btn-success" href="https://ciaf.digital/inscribete/" target="_blank">Crédito educativo</a>
+                      </p>
+                   </div>
+
+                </div>
+             </div>
+
+            <div class="col-xl-8">
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+                      <div class="card m-2">
+                        <div class="card-header">
+                          <div class="row align-items-center">
+                            <div class="col-2"><img src="../../../assets/image/icono-doc.webp" width="40px"></div>
+                            <div class="col-10">Diligencia el formulario de inscripción.</div>
+    
+                          </div>
+                       </div>
+                        <div class="card-body">
+                          <div class="row" *ngIf="formulario === 1; else formularioOk">
+                            <div class="col-12 ">
+
+                              <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's content.
+                              </p>
+                              <a data-bs-toggle="modal" data-bs-target="#formulario" class="btn btn-primary">
+                                Completar formulario
+                              </a>
+
+                            </div>
+                           
+                          </div>
+                          <!-- Bloque alternativo si matricula NO es 1 -->
+                          <ng-template #formularioOk>
+                            <div class="row">
+                              <p class="card-text">
+                               Formulario validado
+                              </p>
+                            </div>
+                          </ng-template>
+                          
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="card m-2">
+                        <div class="card-header">
+                          <div class="row align-items-center">
+                            <div class="col-2"><img src="../../../assets/image/icono-doc.webp" width="40px"></div>
+                            <div class="col-10">Diligencia el formulario de entrevista.</div>
+                          </div>
+                       </div>
+                        <div class="card-body">
+                          <div class="row" *ngIf="entrevista === 1; else entrevistaOk">
+                            <div class="col-12 ">
+
+                              <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's content.
+                              </p>
+                              <a data-bs-toggle="modal" data-bs-target="#entrevista" class="btn btn-primary">
+                                Realizar entrevista
+                              </a>
+
+                            </div>
+                           
+                          </div>
+                          <!-- Bloque alternativo si matricula NO es 1 -->
+                          <ng-template #entrevistaOk>
+                            <div class="row">
+                              <p class="card-text">
+                               Entrevista terminada
+                              </p>
+                            </div>
+                          </ng-template>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="card m-2">
+                        <div class="card-header">
+                          <div class="row align-items-center">
+                            <div class="col-2"><img src="../../../assets/image/icono-ok.webp" width="40px"></div>
+                            <div class="col-10">Realizar pago de inscripción.</div>
+    
+                          </div>
+                       </div>
+                        <div class="card-body">
+                          
+          
+                          <div class="row" *ngIf="inscripcion === 1; else pagoExitosoins">
+                            <span class="col-12 fs-1">${{valorinscripcion + valorseguro | number:'1.0-0'}}</span><br>
+                            <span class="small">Incluye seguro</span> 
+                            <span class="small">(Ins. ${{valorinscripcion | number:'1.0-0'}} + ${{valorseguro | number:'1.0-0'}})</span>
+                            <span class="small">(Pago único)</span>
+                          </div>
+                          <!-- Bloque alternativo si matricula NO es 1 -->
+                          <ng-template #pagoExitosoins>
+                            <div class="row">Pago exitoso</div>
+                          </ng-template>
+                        
+                          <div class="col-12">
+                            <div class="row">
+                              <div class="col-auto" id="payment-container-i-e"></div>
+                              <div class="col-auto" id="payment-container-i"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="card m-2">
+                        <div class="card-header">
+                          <div class="row align-items-center">
+                            <div class="col-2"><img src="../../../assets/image/icono-ok.webp" width="40px"></div>
+                            <div class="col-10">Realizar pago de matricula.</div>
+    
+                          </div>
+                       </div>
+                        <div class="card-body">
+          
+                          <div class="row" *ngIf="matricula === 1; else pagoExitoso">
+                            <span class="col-12 fs-5">Matrícula Ordinaria</span>
+                            <span class="fs-6 text-decoration-line-through">${{pecuniario | number:'1.0-0'}} </span>
+                            
+                            <span class="col-12 fs-1">${{ matricula_extraordinaria | number:'1.0-0' }}</span>
+                            <div class="col-12">
+                              <div class="row">
+                                <div class="col-auto" id="payment-container-e"></div>
+                                <div class="col-auto" id="payment-container"></div>
+                                <div class="col-auto"><a href="#" class="btn btn-success py-2">Solicita tu crédito</a></div>
+                              </div>
+                            </div>
+                          
+                            
+                          </div>
+                          
+                          <!-- Bloque alternativo si matricula NO es 1 -->
+                          <ng-template #pagoExitoso>
+                            <div class="row">Pago exitoso</div>
+                          </ng-template>
+                          
+                          
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div class="card m-2">
+
+                    <!-- <img src="..." class="card-img-top" alt="..."> -->
+                    <div class="card-body">
+                        <h5 class="card-title">Documentos personales y académicos.</h5>
+                        <p class="card-text">El tamaño de la imagen o PDF no puede superar: 2MB</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+
+                          <div class="col-12" *ngIf="isValidForm1; else documento1"><!-- // cedula de ciudadania -->
+                            <form (ngSubmit)="onSubmit(1)" #uploadForm="ngForm">
+                              <label class="custom-file-upload">
+                                <input type="file" (change)="onFileChange($event)" hidden />
+                                {{ selectedFileName || "Cargar cedula" }}
+                              </label>
+                              <button type="submit" [disabled]="!selectedFile" class="btn btn-success rounded-0 rounded-end">Guardar</button>
+                            </form>
+                          </div>
+                          <ng-template #documento1>
+                            <div class="col-12"><img src="assets/image/img-li-ok.webp" width="20px"><span class="m-2">Soporte cedula cargado</span></div>
+                          </ng-template>
+
+                        </li>
+                        <li class="list-group-item">
+                          <div class="col-12" *ngIf="isValidForm2; else documento2"><!-- // cedula de ciudadania -->
+                            <form (ngSubmit)="onSubmit(2)" #uploadForm="ngForm">
+                              <label class="custom-file-upload">
+                                <input type="file" (change)="onFileChange2($event)" hidden />
+                                {{ selectedFileName2 || "Cargar diploma" }}
+                              </label>
+                              <button type="submit" [disabled]="!selectedFile2" class="btn btn-success rounded-0 rounded-end">Guardar</button>
+                            </form>
+                          </div>
+                          <ng-template #documento2>
+                            <div class="col-12"><img src="assets/image/img-li-ok.webp" width="20px"><span class="m-2">Soporte diploma cargado</span></div>
+                          </ng-template>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="col-12" *ngIf="isValidForm3; else documento3"><!-- // cedula de ciudadania -->
+                            <form (ngSubmit)="onSubmit(3)" #uploadForm="ngForm">
+                              <label class="custom-file-upload">
+                                <input type="file" (change)="onFileChange3($event)" hidden />
+                                {{ selectedFileName3 || "Acta de grado" }}
+                              </label>
+                              <button type="submit" [disabled]="!selectedFile3" class="btn btn-success rounded-0 rounded-end">Guardar</button>
+                            </form>
+                          </div>
+                          <ng-template #documento3>
+                            <div class="col-12"><img src="assets/image/img-li-ok.webp" width="20px"><span class="m-2">Soporte acta de grado cargado</span></div>
+                          </ng-template>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="col-12" *ngIf="isValidForm4; else documento4"><!-- // cedula de ciudadania -->
+                            <form (ngSubmit)="onSubmit(4)" #uploadForm="ngForm">
+                              <label class="custom-file-upload">
+                                <input type="file" (change)="onFileChange4($event)" hidden />
+                                {{ selectedFileName4 || "Seguro EPS" }}
+                              </label>
+                              <button type="submit" [disabled]="!selectedFile4" class="btn btn-success rounded-0 rounded-end">Guardar</button>
+                            </form>
+                          </div>
+                          <ng-template #documento4>
+                            <div class="col-12"><img src="assets/image/img-li-ok.webp" width="20px"><span class="m-2">Soporte EPS cargado</span></div>
+                          </ng-template>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="col-12" *ngIf="isValidForm5; else documento5"><!-- // cedula de ciudadania -->
+                            <form (ngSubmit)="onSubmit(5)" #uploadForm="ngForm">
+                              <label class="custom-file-upload">
+                                <input type="file" (change)="onFileChange5($event)" hidden />
+                                {{ selectedFileName5 || "Pruebas saber" }}
+                              </label>
+                              <button type="submit" [disabled]="!selectedFile5" class="btn btn-success rounded-0 rounded-end">Guardar</button>
+                            </form>
+                          </div>
+                          <ng-template #documento5>
+                            <div class="col-12"><img src="assets/image/img-li-ok.webp" width="20px"><span class="m-2">Soporte pruebas saber cargado</span></div>
+                          </ng-template>
+                        </li>
+
+                        <li class="list-group-item">
+                          <div class="col-12" *ngIf="isValidForm6; else documento6"><!-- // cedula de ciudadania -->
+                            <form (ngSubmit)="onSubmit(6)" #uploadForm="ngForm">
+                              <label class="custom-file-upload">
+                                <input type="file" (change)="onFileChange6($event)" hidden />
+                                {{ selectedFileName6 || "Soporte Compromiso" }}
+                              </label>
+                              <button type="submit" [disabled]="!selectedFile6" class="btn btn-success rounded-0 rounded-end">Guardar</button>
+                            </form>
+                          </div>
+                          <ng-template #documento6>
+                            <div class="col-12"><img src="assets/image/img-li-ok.webp" width="20px"><span class="m-2">Soporte compromiso cargado</span></div>
+                          </ng-template>
+                        </li>
+
+                        <li class="list-group-item">
+                          <div class="col-12" *ngIf="isValidForm7; else documento7"><!-- // cedula de ciudadania -->
+                            <form (ngSubmit)="onSubmit(7)" #uploadForm="ngForm">
+                              <label class="custom-file-upload">
+                                <input type="file" (change)="onFileChange7($event)" hidden />
+                                {{ selectedFileName7 || "Soporte protección datos" }}
+                              </label>
+                              <button type="submit" [disabled]="!selectedFile7" class="btn btn-success rounded-0 rounded-end">Guardar</button>
+                            </form>
+                          </div>
+                          <ng-template #documento7>
+                            <div class="col-12"><img src="assets/image/img-li-ok.webp" width="20px"><span class="m-2">Soporte datos cargado</span></div>
+                          </ng-template>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>  
+
+       
+        </div>
+    </div>
+</div>
+
+<!-- Modal plan estratégico-->
+<div class="modal fade" id="formulario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-6" id="exampleModalLabel">Formulario de datos personales</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+        <form [formGroup]="myFormulario" (ngSubmit)="guardarFormulario()">
+          <div class="row">
+            <div class="form-group col-12 col-md-6">
+              <label>Jornada de interés:</label>
+              <select formControlName="jornada" class="form-control">
+                <option value="" disabled>-- Selecciona una jornada --</option>
+                <option value="Diurna">Diurna</option>
+                <option value="Nocturna">Nocturna</option>
+                <option value="Fds">Fds</option>
+              </select>
+            </div>
+        
+            <div class="form-group col-12 col-md-6">
+              <label>Primer Nombre:</label>
+              <input type="text" formControlName="nombre" class="form-control" placeholder="Primer Nombre">
+              <div *ngIf="myFormulario.controls['nombre'].invalid && myFormulario.controls['nombre'].touched" class="text-danger">
+                Solo se permiten letras
+              </div>
+            </div>
+        
+            <div class="form-group col-12 col-md-6">
+              <label>Segundo Nombre:</label>
+              <input type="text" formControlName="nombre_2" class="form-control" placeholder="Segundo Nombre">
+            </div>
+        
+            <div class="form-group col-12 col-md-6">
+              <label>Primer Apellido:</label>
+              <input type="text" formControlName="apellidos" class="form-control" placeholder="Primer Apellido">
+            </div>
+        
+            <div class="form-group col-12 col-md-6">
+              <label>Segundo Apellido:</label>
+              <input type="text" formControlName="apellidos_2" class="form-control" placeholder="Segundo Apellido">
+            </div>
+        
+            <div class="form-group col-12 col-md-6">
+              <label>Tipo de Documento:</label>
+              <select formControlName="tipo_documento" class="form-control">
+                <option value="" disabled>-- Selecciona un documento --</option>
+                <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+                <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+                <option value="Pasaporte">Pasaporte</option>
+              </select>
+            </div>
+        
+            <div class="form-group col-12 col-md-6">
+              <label>Celular:</label>
+              <input type="tel" formControlName="celular" class="form-control" placeholder="Número de celular">
+            </div>
+        
+            <div class="form-group col-12 col-md-6">
+              <label>Correo Personal:</label>
+              <input type="email" formControlName="email" class="form-control" placeholder="Correo electrónico">
+            </div>
+        
+            <div class="form-group col-12 col-md-6">
+              <label>Nivel Escolaridad:</label>
+              <select formControlName="nivel_escolaridad" class="form-control">
+                <option value="" disabled>-- Selecciona un nivel --</option>
+                <option value="Técnico">Técnico</option>
+                <option value="Tecnólogo">Tecnólogo</option>
+                <option value="Profesional">Profesional</option>
+              </select>
+            </div>
+        
+            <div class="form-group col-12 col-md-6">
+              <label>Nombre del colegio:</label>
+              <input type="text" formControlName="nombre_colegio" class="form-control" placeholder="Nombre del colegio">
+            </div>
+        
+            <div class="form-group col-12 col-md-6">
+              <label>Fecha de graduación:</label>
+              <input type="date" formControlName="fecha_graduacion" class="form-control">
+            </div>
+          </div>
+        
+          <div class="form-group col-12">
+            <br>
+            <button type="submit" class="btn btn-outline-success" [disabled]="myFormulario.invalid">Guardar Cambios</button>
+          </div>
+        </form>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal plan estratégico-->
+<div class="modal fade" id="entrevista" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-6" id="exampleModalLabel">Entrevista</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="myEntrevista" (ngSubmit)="guardarEntrevista()">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label>¿Cómo describirías tu salud física en general?</label>
+              <select formControlName="salud_fisica" class="form-control">
+                <option value="" disabled>-- Selecciona una opción --</option>
+                <option value="Excelente">Excelente</option>
+                <option value="Buena">Buena</option>
+                <option value="Regular">Regular</option>
+                <option value="Pobre">Pobre</option>
+              </select>
+            </div>
+        
+            <div class="col-12 py-2">
+             <div class="row">
+                <div class="col-12 pb-2">
+                  <label>¿Tienes alguna condición de salud que requiera atención especial en CIAF?</label>
+                </div>
+                <div class="form-group col-4">
+                
+                  <select formControlName="condicion_de_salud" class="form-control">
+                    <option value="" disabled>-- Selecciona una opción --</option>
+                    <option value="si">SI</option>
+                    <option value="no">NO</option>
+                    <option value="Prefiero no responder">Prefiero no responder</option>
+                  </select>
+                </div>
+              
+                <div class="form-group col-md-8" *ngIf="myEntrevista.get('condicion_de_salud')?.value === 'si'">
+                  <input type="text" formControlName="si_condicion_de_salud" class="form-control" placeholder="Ingrese su condición">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 py-2">
+              <div class="row">
+                 <div class="col-12 pb-2">
+                   <label>¿Has sido diagnosticado con alguna condición neurológica?</label>
+                 </div>
+                 <div class="form-group col-4">
+                 
+                   <select formControlName="condicion_neurologica" class="form-control">
+                     <option value="" disabled>-- Selecciona una opción --</option>
+                     <option value="si">SI</option>
+                     <option value="no">NO</option>
+                     <option value="Prefiero no responder">Prefiero no responder</option>
+                   </select>
+                 </div>
+               
+                 <div class="form-group col-8" *ngIf="myEntrevista.get('condicion_neurologica')?.value === 'si'">
+                  <input type="text" formControlName="si_condicion_neurologica" class="form-control" placeholder="Ingrese la condición neurológica">
+                </div>
+               </div>
+             </div>
+
+             <div class="form-group col-md-6 p-2">
+              <label>¿Has experimentado niveles de estrés significativos en los últimos 6 meses?</label>
+              <select formControlName="niveles_de_estres" class="form-control">
+                <option value="" disabled>-- Selecciona una opción --</option>
+                <option value="Excelente">Excelente</option>
+                <option value="si">SI</option>
+                <option value="no">NO</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-6 p-2">
+              <label>¿Qué tan cómodo te sientes hablando sobre tu salud mental?</label>
+              <select formControlName="comodo_salud_mental" class="form-control">
+                <option value="" disabled>-- Selecciona una opción --</option>
+                <option value="Excelente">Excelente</option>
+                <option value="muy comodo">muy cómodo</option>
+              <option value="moderadamente">moderadamente cómodo</option>
+              <option value="poco">poco cómodo</option>
+              <option value="experimentado">No lo he experimentado</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-6 p-2">
+              <label>¿Tienes acceso a servicios de salud mental si los necesitas?</label>
+              <select formControlName="acceso_salud_mental" class="form-control">
+                <option value="" disabled>-- Selecciona una opción --</option>
+                <option value="si">SI</option>
+                <option value="no">NO</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-6 p-2">
+              <label>¿Te gustaría recibir apoyo en temas relacionados con la salud mental durante tu tiempo en CIAF?</label>
+              <select formControlName="recibir_apoyo_mental" class="form-control">
+                <option value="" disabled>-- Selecciona una opción --</option>
+                <option value="si">SI</option>
+                <option value="no">NO</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-6 p-2">
+              <label>¿Has tenido dificultades para manejar emociones como la ansiedad o la tristeza?</label>
+              <select formControlName="dificultad_emocional" class="form-control">
+                <option value="" disabled>-- Selecciona una opción --</option>
+                <option value="Frecuentemente">Frecuentemente</option>
+              <option value="Ocasionalmente">Ocasionalmente</option>
+              <option value="Raramente">Raramente</option>
+              <option value="Nunca">Nunca</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-6 p-2">
+              <label>¿Te gustaría referir personas para que inicien su experiencia universitaria en CIAF?</label>
+              <select formControlName="referir_persona" class="form-control">
+                <option value="" disabled>-- Selecciona una opción --</option>
+                <option value="si">SI</option>
+                <option value="no">NO</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-6 p-2">
+              <label>¿Quién sostiene tus estudios?</label>
+              <select formControlName="sostiene" class="form-control">
+                <option value="" disabled>-- Selecciona una opción --</option>
+                <option value="padre">Padre</option>
+                <option value="madre">Madre</option>
+                <option value="papa_mama">Padre y madre</option>
+                <option value="Tú mismo">Tú mismo</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+        
+            <div class="form-group col-md-12 p-2">
+              <label>¿Laboras actualmente?</label>
+              <select formControlName="labora" class="form-control">
+                <option value="" disabled>-- Selecciona una opción --</option>
+                <option value="si">Si</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+        
+            <div class="form-group col-md-6 p-2" *ngIf="myEntrevista.get('labora')?.value === 'si'">
+              <label>¿En qué empresa laboras?</label>
+              <input type="text" formControlName="donde_labora" class="form-control" placeholder="Ingrese empresa">
+            </div>
+
+            <div class="form-group col-md-6 p-2" *ngIf="myEntrevista.get('labora')?.value === 'si'">
+              <label>¿Cuánto tiempo llevas laborando en esta entidad?</label>
+              <select formControlName="tiempo_laborando" class="form-control">
+                <option value="" disabled>-- Selecciona una opción --</option>
+                <option value="0 a 6 meses">0 a 6 meses</option>
+                <option value="6 meses a 1 año">6 meses a un año</option>
+                <option value="un año a dos años">un año a dos años</option>
+                <option value="mayor a dos años">mayor a dos años</option>
+              </select>
+            </div>
+
+            <div class="form-group col-xl-6 p-2">
+              <label>Escribe el nombre completo de tu referencia familiar</label>
+              <input type="text" formControlName="nombre_referencia" class="form-control" placeholder="Ingrese el nombre">
+            </div>
+
+
+          <div class="form-group col-md-6 p-2">
+            Escribe el número de contacto de tu referencia familiar<br>
+            <input formControlName="celular_referencia" placeholder="Escribe el número de contacto de tu referencia familiar" class="form-control">
+          </div>
+
+        
+          <div class="form-group col-md-6 p-2">
+            ¿Cuál es el parentesco con tu referencia familiar?<br>
+            <select formControlName="parentesco_referencia" class="form-control">
+              <option value="" selected disabled>-- Selecciona una opción --</option>
+              <option value="Padre">Padre</option>
+              <option value="Madre">Madre</option>
+              <option value="Pareja">Pareja</option>
+              <option value="Hermano/a">Hermano/a</option>
+              <option value="Tío/a">Tío/a</option>
+              <option value="Abuelo/a">Abuelo/a</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-12 p-2">
+            ¿Has solicitado o estás interesado en solicitar algún tipo de beca o ayuda financiera?<br>
+            <select formControlName="solicitado_beca" class="form-control">
+              <option value="" selected disabled>-- Selecciona una opción --</option>
+              <option value="si">Sí</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        
+          <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 p-2">
+            ¿Cómo describirías tu desempeño académico previo?<br>
+            <select formControlName="desempeno_academico" class="form-control">
+              <option value="" selected disabled>-- Selecciona una opción --</option>
+              <option value="Excelente">Excelente</option>
+              <option value="Buena">Buena</option>
+              <option value="Regular">Regular</option>
+              <option value="Deficiente">Deficiente</option>
+            </select>
+          </div>
+
+          <div class="col-12 py-2">
+            <div class="row">
+               <div class="col-12 pb-2">
+                 <label>¿Tienes alguna materia o área de estudio en la que sientas que necesitas apoyo adicional?</label>
+               </div>
+               <div class="form-group col-4">
+               
+                 <select formControlName="materia_apoyo" class="form-control">
+                   <option value="" disabled>-- Selecciona una opción --</option>
+                   <option value="si">SI</option>
+                   <option value="no">NO</option>
+                   <option value="Prefiero no responder">Prefiero no responder</option>
+                 </select>
+               </div>
+             
+               <div class="form-group col-md-8 px-2" *ngIf="myEntrevista.get('materia_apoyo')?.value === 'si'">
+                 <input type="text" formControlName="si_materia_apoyo" class="form-control" placeholder="¿Cual materia?">
+               </div>
+             </div>
+           </div>
+
+
+        
+          <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 p-2">
+            ¿Cómo te sientes respecto a tus habilidades de estudio y organización?<br>
+            <select formControlName="habilidades_estudio" class="form-control">
+              <option value="" selected disabled>-- Selecciona una opción --</option>
+              <option value="Muy seguro">Muy seguro</option>
+              <option value="Seguro">Seguro</option>
+              <option value="Poco seguro">Poco seguro</option>
+              <option value="Inseguro">Inseguro</option>
+            </select>
+          </div>
+        
+          <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 p-2">
+            ¿Has tenido dificultades para cumplir con las exigencias académicas en el pasado?<br>
+            <select formControlName="dificultades_exigencias" class="form-control">
+              <option value="" selected disabled>-- Selecciona una opción --</option>
+              <option value="si">Sí</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        
+          <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 p-2">
+            ¿Qué tan cómodo te sientes con el uso de herramientas digitales para el aprendizaje?<br>
+            <select formControlName="comodo_herramientas" class="form-control">
+              <option value="" selected disabled>-- Selecciona una opción --</option>
+              <option value="Muy cómodo">Muy cómodo</option>
+              <option value="Moderadamente cómodo">Moderadamente cómodo</option>
+              <option value="Poco cómodo">Poco cómodo</option>
+              <option value="No cómodo en absoluto">No cómodo en absoluto</option>
+            </select>
+          </div>
+
+        </div>
+        <div *ngIf="myEntrevista.invalid" class="alert alert-danger">
+          <p>Diligenciar estos campos, si falta 1 no puede guardar</p>
+          <ul>
+            <li *ngFor="let control of invalidControls">{{ control }}</li>
+          </ul>
+        </div>
+        
+          <button type="submit" class="btn btn-outline-success col-12" [disabled]="myEntrevista.invalid">Guardar y terminar Entrevista</button>
+        </form>
+        
+        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

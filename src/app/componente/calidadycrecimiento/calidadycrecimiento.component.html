@@ -1,0 +1,34 @@
+<section class="pt-4 mt-4">
+    <div class="row justify-content-center">
+        <div class="col-xl-12 mb-4 pb-4">
+            <h2 class="titulo-2 text-center">Calidad y Crecimiento </h2>
+        </div>
+        <div class="col-xl-10 col-lg-10 col-md-10 col-10">
+            <button (click)="prevImg()" class="boton-prev"><img src="{{prev}}" alt ="Anterior"></button>
+
+
+                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" responsive="breakpoints">
+                    <div ngxSlickItem *ngFor="let datos of listarCalidadCrecimiento index as i" class="slide">
+                        <div *ngIf="datos.tipo_link==1">
+                            <div (mouseover)="animarcalidad(i)" (mouseout)="noanimarcalidad(i)">
+                                <a routerLink="{{datos.url_calidad}}">
+                                    <img src="https://ciaf.digital/public/web_calidad_crecimiento/{{datos.imagen_calidad}}" alt="{{datos.titulo_calidad}}" width="100%" height="auto" [className]="'e-img-'+i">
+                                    <div class="nombre-calidad"><span>{{datos.titulo_calidad}}</span></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div *ngIf="datos.tipo_link==0">
+                            <div (mouseover)="animarcalidad(i)" (mouseout)="noanimarcalidad(i)">
+                                <a href="{{datos.url_calidad}}" target="_blank">
+                                    <img src="https://ciaf.digital/public/web_calidad_crecimiento/{{datos.imagen_calidad}}" alt="{{datos.titulo_calidad}}" width="100%" height="auto" [className]="'e-img-'+i">
+                                    <div class="nombre-calidad"><span>{{datos.titulo_calidad}}</span></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </ngx-slick-carousel>
+
+            <button (click)="nextImg()" class="boton-next"><img src="{{next}}" alt="Siguiente"></button>
+        </div>
+    </div>
+</section>
