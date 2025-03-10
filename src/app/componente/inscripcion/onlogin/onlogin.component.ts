@@ -34,7 +34,7 @@ export class OnloginComponent {
         this.router.navigate(['ondashboard']);
         alertify.success('Ingreso correcto');  
       }else{
-
+        console.log(data);
         alertify.error('Acceso denegado');  
       }
     });
